@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <a href="{% url 'inputpelanggaran'  %}" type="button" class="btn btn-rounded btn-outline-secondary icon-note menu-icon"> Tambah pelanggaran</a>
+                            <a id="btn" href="{% url 'export_xls'  %}" type="button" class="btn btn-success">Export excel</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>                 
+                                        <th>No</th>
+                                        <th>Nama Santri</th>
+                                        <th>Nama Pelanggaran</th>
+                                        <th>Kategori</th>
+                                        <th>Tanggal Kejadian</th>
+                                        <th>Keterangan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for pln in formpelanggaran %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ pln.nama_santri }}</td>
+                                            <td>{{ pln.nama_pelanggaran }}</td>
+                                            <td>{{ pln.kategory }}</td>
+                                            <td>{{ pln.kejadian }}</td>
+                                            <td>{{ pln.keterangan }}</td>
+                                        </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            {% comment %} <a href="{% url 'inputsantri'  %}" type="button" class="btn btn-primary icon-note menu-icon"> Tambah santri</a> {% endcomment %}
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>                 
+                                        <th>Nama</th>
+                                        <th>Alamat</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>{{ data.nama_santri }}</td>
+                                            <td>{{ data.alamat }}</td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

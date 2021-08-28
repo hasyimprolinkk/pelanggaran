@@ -1,0 +1,54 @@
+{% extends "baseuser.html" %}
+{% load static %}
+
+{% block content %}
+<div class="content-body" >
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg">
+                <div class="card">
+                    <div class="card-body">
+                    <center><label><h2 class="arab-font"> Form pelanggaran santri </h2></label></center>
+                    <br>
+                        <div class="card-title">
+                            <a href="{% url 'inputpelanggaranuser'  %}" type="button" class="btn btn-primary btn-sm icon-note menu-icon"> Tambah pelanggaran</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="data-tabel" class="table table-stripped">
+                                <thead>
+                                    <tr>                 
+                                        <th>No</th>
+                                        <th>Nama Santri</th>
+                                        <th>Nama Pelanggaran</th>
+                                        <th>Kategori</th>
+                                        <th>Tanggal Kejadian</th>
+                                        <th>Keterangan</th>
+                                        <th>Hukuman</th>
+                                        <!-- <th>Update</th> -->
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for pln in formpelanggaran %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ pln.nama_santri }}</td>
+                                            <td>{{ pln.nama_pelanggaran }}</td>
+                                            <td>{{ pln.kategory }}</td>
+                                            <td>{{ pln.kejadian }}</td>
+                                            <td>{{ pln.keterangan }}</td>
+                                            <td>{{ pln.hukuman }}</td>
+                                            {% comment %} <td><a href="" class="btn btn-success btn-sm">Edit</a></td> {% endcomment %}
+                                            <td><a href="{% url 'deletepelanggaranuser' pln.id %}" class="btn btn-danger btn-sm">Hapus</a></td>
+                                        </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

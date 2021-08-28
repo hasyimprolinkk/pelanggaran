@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ page }}</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'public/images/favicon.png' %}">
+    <!-- Pignose Calender -->
+    <link href="{% static 'public/plugins/pg-calendar/css/pignose.calendar.min.css' %}" rel="stylesheet">
+    <!-- Chartist -->
+    <link rel="stylesheet" href="{% static 'public/plugins/chartist/css/chartist.min.css' %}">
+    <link rel="stylesheet" href="{% static 'public/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css' %}">
+    <link href="{% static 'public/dataTables/datatables.min.css' %}" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link href="{% static 'public/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="main-wrapper">
+
+        <div class="nav-header">
+            <div class="brand-logo">
+                <a href="index.html">
+                    <b class="logo-abbr"><img src="{% static 'public/images/PONDOK1.PNG' %}" width="80" alt=""> </b>
+                    <span class="logo-compact"><img src="{% static 'public/images/PONDOK1.JPG' %}" alt=""></span>
+                    <span class="brand-title">
+                        <img src="{% static 'public/images/logo.svg' %}" href="{% url 'beranda' %}" alt="">
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <div class="header bg-primary">
+            <div class="header-content clearfix">
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <li class="icons d-none d-md-flex">
+                        <a class="log-user">
+                            <span class="text-white">Assalamualaikum, {{request.user.first_name }} {{ request.user.last_name }}</span> 
+                        </a>
+                    </li>
+                    <li class="icons dropdown">
+                        <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                            <span class="activity active"></span>
+                            <img src="{% static 'public/images/user/1.png' %}" height="40" width="40" alt="">
+                        </div>
+                        <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                            <div class="dropdown-content-body">
+                                <ul>
+                                    <li><a href="{% url 'logout' %}"><i class="icon-key"></i> <span>Logout</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+            </div>
+        </div>
+        {% include "navbar.html" %}
+        <div class="" style="background-image: url('{% static 'public/images/sabilul_hasan.jpg' %}')">
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+        {% comment %} <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a>
+                    2018</p>
+            </div>
+        </div> {% endcomment %}
+        <!--**********************************
+    Footer end
+***********************************-->
+    </div>
+    <!--**********************************
+Main wrapper end
+***********************************-->
+            {% block script %}
+
+            {% endblock script %}
+    <!--**********************************
+Scripts
+***********************************-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{% static 'public/plugins/common/common.min.js' %}"></script>
+    <script src="{% static 'public/js/custom.min.js' %}"></script>
+    <script src="{% static 'public/js/settings.js' %}"></script>
+    <script src="{% static 'public/js/gleek.js' %}"></script>
+    <script src="{% static 'public/js/styleSwitcher.js' %}"></script>
+
+    <!-- Chartjs -->
+    <script src="{% static 'public/plugins/chart.js/Chart.bundle.min.js' %}"></script>
+    <!-- Circle progress -->
+    <script src="{% static 'public/plugins/circle-progress/circle-progress.min.js' %}"></script>
+    <!-- Datamap -->
+    <script src="{% static 'public/plugins/d3v3/index.js' %}"></script>
+    <script src="{% static 'public/plugins/topojson/topojson.min.js' %}"></script>
+    <script src="{% static 'public/plugins/datamaps/datamaps.world.min.js' %}"></script>
+    <!-- Morrisjs -->
+    <script src="{% static 'public/plugins/raphael/raphael.min.js' %}"></script>
+    <script src="{% static 'public/plugins/morris/morris.min.js' %}"></script>
+    <!-- Pignose Calender -->
+    <script src="{% static 'public/plugins/moment/moment.min.js' %}"></script>
+    <script src="{% static 'public/plugins/pg-calendar/js/pignose.calendar.min.js' %}"></script>
+    <!-- ChartistJS -->
+    <script src="{% static 'public/plugins/chartist/js/chartist.min.js' %}"></script>
+    <script src="{% static 'public/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js' %}"></script>
+    <script src="{% static 'public/js/dashboard/dashboard-1.js' %}"></script>
+    <script src="{% static 'public/dataTables/datatables.min.js' %}"></script>
+
+    <script src="{% static 'public/plugins/flot/js/jquery.flot.min.js' %}"></script>
+    <script src="{% static 'public/plugins/flot/js/jquery.flot.pie.js' %}"></script>
+    <script src="{% static 'public/plugins/flot/js/jquery.flot.resize.js' %}"></script>
+    <script src="{% static 'public/plugins/flot/js/jquery.flot.spline.js' %}"></script>
+    <script src="{% static 'public/plugins/flot/js/jquery.flot.init.js' %}"></script>
+    
+    <script>
+        $('#pelanggaran_table').dataTable({
+            dom : 'Bfrtip',
+            button : [
+                {
+                    extend : 'pdf',
+                    oriented : 'potrait',
+                    pageSize : 'Legal',
+                    title : 'Data_Pasien',
+                    download : 'open'
+                },
+                'excel','print'
+            ]
+        });
+        $('#data-tabel').dataTable();
+    </script>
+
+    {% block foto %}
+
+    {% endblock foto %}
+
+</body>
+
+</html>

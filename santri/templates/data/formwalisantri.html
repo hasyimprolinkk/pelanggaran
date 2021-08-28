@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <a href="{% url 'inputwalisantri'  %}" type="button" class="btn btn-rounded btn-outline-secondary icon-note menu-icon"> Tambah Wali santri</a>
+                        </div>
+                        <div class="row">
+                        <div class="col">
+                            <div class="card card-body">
+                                <form method="get">
+                                    <div class="row">
+                                        <div>
+                                        {{ filter_wali_santri.form.nama_wali| add_class:"form-control" }}
+                                        </div>
+                                        <button class="btn btn-primary" type="submit">Search</button>
+                                    </div> 
+                                </form>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>              
+                                        <th>Nama Wali</th>
+                                        <th>Alamat</th>
+                                        <th>Nomer telepon</th>
+                                        <th>Update</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for wali in formdatawali %}
+                                        <tr>
+                                            <th>{{ forloop.counter }}</th>
+                                            <td>{{ wali.nama_wali }}</td>
+                                            <td>{{ wali.alamat }}</td>
+                                            <td>{{ wali.no_telpon }}</td>
+                                            <td><a href="{% url 'updatewalisantri' wali.id %}" class="btn btn-success btn-sm">Edit</a></td>
+                                            <td><a href="{% url 'deletewalisantri' wali.id %}" class="btn btn-danger btn-sm">Hapus</a></td>
+                                        </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

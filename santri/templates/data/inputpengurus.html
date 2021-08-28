@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="content-body">
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                 <div class="col-12">
+                 <div class="card">
+                            <div class="card-body">
+                <!-- {% if messages %}
+                    {% for pesan  in messages  %}
+                        <div class="alert alert-{{ pesan.tags }}" align="center">
+                            <b>{{ pesan }}</b>
+                        </div>
+                    {% endfor %}
+                {% endif %} -->
+                            <form class="form-horizontal" action="" method="POST">
+                            {% csrf_token %}
+                                <div class="card-body">
+                                    <h4 class="card-title">Form Pengguna</h4>
+                                    {{form|crispy}}
+                                <div class="form-group mt-3">
+                                    <label>Username: </label>
+                                    <input type="text" class="form-control" name="username" id="date-mask"
+                                        placeholder="Username">
+                                </div>
+
+                                 <div class="form-group mt-3">
+                                    <label>Password: </label>
+                                    <input type="password" class="form-control" name="password" id="date-mask"
+                                        placeholder="Password">
+                                </div>
+
+                                 <div class="form-group mt-3">
+                                    <label>Ulangi Password: </label>
+                                    <input type="password" class="form-control" name="password2" id="date-mask"
+                                        placeholder="Password">
+                                </div>
+
+                                 <div class="border-top">
+                                    <div class="card-body">
+                                        <button type="submit" class="btn btn-primary">SIMPAN</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                 </div>
+            </div>
+</div>            
+
+{% endblock content %}
+

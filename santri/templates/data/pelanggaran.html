@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <a href="{% url 'inputpelanggaran'  %}" type="button" class="btn btn-rounded btn-outline-secondary icon-note menu-icon"> Tambah pelanggaran</a>
+                            <!-- <a id="btn" href="{% url 'export_xls'  %}" type="button" class="btn btn-success">Export excel</a> -->
+                        </div>
+                        {% if messages %}
+                        {%for pesan in messages %}
+                        <div class="alert alert-success alert-dismissible fade show">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                            </button> {{ pesan }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+					 	
+                        <div class="table-responsive">
+                            <table id="data-tabel" class="table">
+                                <thead>
+                                    <tr>                 
+                                        <th>No</th>
+                                        <th>Foto</th>
+                                        <th>Nama Santri</th>
+                                        <th>Nama Pelanggaran</th>
+                                        <th>Kategori</th>
+                                        <th>Tanggal Kejadian</th>
+                                        <th>Keterangan</th>
+                                        <th>Hukuman</th>
+                                        <th>Update</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for pln in formpelanggaran %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td><img src="{% static 'images/' %}{{pln.nama_santri.foto}}" alt="" width="80"> </td>
+                                            <td>{{ pln.nama_santri }}</td>
+                                            <td>{{ pln.nama_pelanggaran }}</td>
+                                            <td>{{ pln.kategory }}</td>
+                                            <td>{{ pln.kejadian }}</td>
+                                            <td>{{ pln.keterangan }}</td>
+                                            <td>{{ pln.hukuman }}</td>
+                                            <td><a href="{% url 'updatepelanggaran' pln.id %}" class="btn btn-success btn-sm">Edit</a></td>
+                                            <td><a href="{% url 'deletepelanggaran' pln.id %}" class="btn btn-danger btn-sm">Hapus</a></td>
+                                        </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <!-- <ul class="pagination justify-content-center">
+                                <li class="page-item {% if not previous %} disabled {% endif %}">
+                                 <a class="page-link" href="{{ previous }}">Previous</a></li>
+                                {% for n in halaman_pln.paginator.page_range %}
+                                 {% if halaman_order_custumer.number == n %}
+                                 <li class="page-item active" aria>
+                                 <span class="page-link">{{ n }}<span class="sr-only">(current)</span>
+                                 </span>
+                                 </li>
+                                 {% elif n > halaman_pln.number|add:-3 and n < halaman_pln.number|add:3 %}
+                                 <li class="page-item"><a class="page-link" href="?halaman={{ n }}">{{ n }}</a></li>
+                                 {% endif %}
+                                {% endfor %}
+                                <li class="page-item {% if not next %} disabled {% endif %}">
+                                 <a class="page-link" href="{{ next }}">Next</a></li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,37 @@
+<div class="nk-sidebar">           
+    <div class="nk-nav-scroll">
+        <ul class="metismenu" id="menu">
+            <li class="nav-label">Menu</li>
+            <li>
+                <h4><a class="nav-link {% if menu == 'beranda' %} active {% endif %}" href="{% url 'beranda' %}" aria-expanded="false">
+                    <i class="icon-speedometer menu-icon"></i><span class="nav-text">Home</span>
+                </a></h4>
+            </li>
+            <li>
+                <h4><a class="nav-link {% if menu == 'pengurus' %} active {% endif %}" href="{% url 'pengurus' %}" aria-expanded="false">
+                    <i class="icon-note menu-icon"></i><span class="nav-text">Pengurus</span>
+                </a></h4>
+            </li>
+            <li>
+                <h4><a class="nav-link {% if menu == 'santri' %} active {% endif %}" href="{% url 'santri' %}" aria-expanded="false">
+                    <i class="icon-note menu-icon"></i><span class="nav-text">Data santri</span>
+                </a></h4>
+            </li>
+            <li>
+                <h4><a class="nav-link {% if menu == 'walisantri' %} active {% endif %}" href="{% url 'walisantri' %}" aria-expanded="false">
+                    <i class="icon-note menu-icon"></i><span class="nav-text">Wali santri</span>
+                </a></h4>
+            </li>
+            <li>
+                <h4><a class="nav-link {% if menu == 'pelanggaran' %} active {% endif %}" href="{% url 'pelanggaran' %}" aria-expanded="false">
+                    <i class="icon-note menu-icon"></i><span class="nav-text">Pelanggaran</span>
+                </a></h4>
+            </li>
+            <li>
+                <h4><a class="nav-link {% if menu == 'laporan' %} active {% endif %}" href="{% url 'laporan' %}" aria-expanded="false">
+                    <i class="icon-note menu-icon"></i><span class="nav-text">Laporan</span>
+                </a></h4>
+            </li>           
+        </ul>
+    </div>
+</div>

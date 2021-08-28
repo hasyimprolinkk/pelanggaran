@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="content-body">
+    <div class="page-wrapper">
+        <div class="container-fluid">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                    {% comment %} {% if messages %}
+                        {% for pesan  in messages  %}
+                            <div class="alert alert-{{ pesan.tags }}" align="center">
+                                <b>{{ pesan }}</b>
+                            </div>
+                        {% endfor %}
+                    {% endif %} {% endcomment %}
+                        <form class="" action="" method="POST">
+                        <div class="form-group">
+                            <div id="hidden-santri">
+                                <img id="foto-santri" class="mb-3" src="" width="150" alt="">
+                            </div>
+                            {% csrf_token %}
+                            {{formpln|crispy}}
+                        </div>
+                            <div class="border-top">
+                                <div class="card-body">
+                                    <button type="submit" class="btn btn-primary">SIMPAN</button>
+                                </div>
+                            </div>
+                        </form>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>            
+            
+
+{% endblock content %}
+
+{% block foto %}
+    <script>
+        $('#hidden-santri').hide();
+        
+        $('#id_nama_santri').on('change', function () {
+            var selectVal = $("#id_nama_santri option:selected").val();
+            $.ajax({
+                url: "{% url 'getfoto' %}",
+                method: 'get',
+                data: {'pk' : selectVal},
+                success: function(response){
+                    $('#foto-santri').attr('src', "{% static 'images/' %}" + response);
+                    $('#hidden-santri').show();
+                }
+            });
+        });
+    </script>
+{% endblock foto %}
+

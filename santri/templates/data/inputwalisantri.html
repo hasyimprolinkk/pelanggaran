@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="content-body">
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            {% comment %} <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">{{menu}}</h4>
+                        <div class="ms-auto text-end">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">{{menu}}</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div> {% endcomment %}
+
+            <div class="container-fluid">
+                 <div class="col-12">
+                 <div class="card">
+                            <div class="card-body">
+               <!--  {% if messages %}
+                    {% for pesan  in messages  %}
+                        <div class="alert alert-{{ pesan.tags }}" align="center">
+                            <b>{{ pesan }}</b>
+                        </div>
+                    {% endfor %}
+                {% endif %} -->
+                            <form class="form-horizontal" action="" method="POST">
+                            {% csrf_token %}
+                                <div class="card-body">
+                                    <h4 class="card-title">Form Wali Santri</h4>
+                                    {{formwali|crispy}}
+                                 <div class="border-top">
+                                    <div class="card-body">
+                                        <button type="submit" class="btn btn-primary">SIMPAN</button>
+                                    </div>
+                                </div>
+
+
+                                </div>
+                            </form>
+                        </div>
+                 </div>
+            </div>
+        </div>
+</div>            
+            
+
+{% endblock content %}
+

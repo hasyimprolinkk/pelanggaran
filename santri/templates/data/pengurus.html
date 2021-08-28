@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+<style>
+    tbody {
+        overflow-y: ;
+    }
+</style>
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <a href="{% url 'inputpengurus' %}" type="button" class="btn btn-rounded btn-outline-secondary icon-note menu-icon"> Tambah Pengguna</a>
+                        </div>
+                        {% comment %} <div class="col">
+                            <div class="card card-body">
+                                <form method="get">
+                                    <div class="row">
+                                        <div>
+                                        {{ filter_santri.form.nama_santri| add_class:"form-control" }}
+                                        </div>
+                                        <button class="btn btn-primary" type="submit">Search</button>
+                                    </div> 
+                                </form>
+                            </div>
+                        </div> {% endcomment %}
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>                 
+                                        <th>No</th>
+                                        <th>Username</th>
+                                        <th>Nama Pengurus</th>
+                                        <th>Staff</th>
+                                        <th>No Telepon</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for pgn in pengurus %}
+                                        <tr>
+                                            <th>{{ forloop.counter }}</th>
+                                            <td>{{ pgn.user }}</td>
+                                            <td>{{ pgn.nama_pengurus }}</td>
+                                            <td>{{ pgn.staff }}</td>
+                                            <td>{{ pgn.no_telpon }}</td>
+                                            <td><a href="{% url 'deletepengurus' pgn.id %}" class="btn btn-danger btn-sm">Hapus</a></td>
+                                        </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

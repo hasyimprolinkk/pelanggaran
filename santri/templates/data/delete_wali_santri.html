@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<div class="content-body">
+	<div class="container-fluid">
+		 <div class="row justify-content-md-center">
+			 <div class="col-md-8">
+				 <div class="card card-body">
+					 <p> Are you sure want to delete "{{ formhapuswalisantri }}" ?</p>
+						 <form action="" method="POST">
+							 {% csrf_token %}
+							 <br>
+							 <a class="btn btn-danger" href="{% url 'walisantri' %}" role="button">Cancel</a>
+						 <input type="submit" class="btn btn-primary" name="Confirm"/>
+					 </form>
+				 </div>
+			 </div>
+		 </div>
+	</div>
+</div>
+{% endblock content %}

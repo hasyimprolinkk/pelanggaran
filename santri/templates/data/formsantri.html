@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+<style>
+    tbody {
+        overflow-y: ;
+    }
+</style>
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <a href="{% url 'inputsantri'  %}" type="button" class="btn btn-rounded btn-outline-secondary icon-note menu-icon"> Tambah santri</a>
+                        </div>
+                        <div class="col">
+                            <div class="card card-body">
+                                <form method="get">
+                                    <div class="row">
+                                        <div>
+                                        {{ filter_santri.form.nama_santri| add_class:"form-control" }}
+                                        </div>
+                                        <button class="btn btn-primary" type="submit">Search</button>
+                                    </div> 
+                                </form>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>                 
+                                        <th>No</th>
+                                        <th>Foto</th>
+                                        <th>No induk</th>
+                                        <th>Nama</th>
+                                        <th>Tanggal lahir</th>
+                                        <th>Alamat</th>
+                                        <th>Pendidikan</th>
+                                        <th>Orang tua</th>
+                                        <th>Update</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for s in formdata %}
+                                        <tr>
+                                            <th>{{ forloop.counter }}</th>
+                                            <th><img src="{% static 'images/' %}{{s.foto}}" alt="" width="80"> </th>
+                                            <td>{{ s.no_induk }}</td>
+                                            <td>{{ s.nama }}</td>
+                                            <td>{{ s.tgl_lahir }}</td>
+                                            <td>{{ s.alamat }}</td>
+                                            <td>{{ s.pendidikan }}</td>
+                                            <td>{{ s.nama_wali }}</td>
+                                            <td><a href="{% url 'updatesantri' s.id %}" class="btn btn-success btn-sm"> Edit </a></td>
+                                            <td><a href="{% url 'deletesantri' s.id %}" class="btn btn-danger btn-sm">Hapus</a></td>
+                                        </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
